@@ -4,6 +4,9 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { GitHubIcon, TwitterIcon } from "@/components/Socialicon";
 import { Toaster } from "@/components/ui/toaster";
 import { bio, name, projects } from "../info";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import { LandingPosts } from "@/components/LandingPosts";
 
 const Index = () => {
   return (
@@ -21,7 +24,7 @@ const Index = () => {
               <h1 className="text-3xl font-semibold">{name}</h1>
               <div className="flex gap-2">
                 <a
-                  href="https://github.com"
+                  href="https://github.com/saksham1387"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-200"
@@ -29,7 +32,7 @@ const Index = () => {
                   <GitHubIcon className="w-5 h-5" />
                 </a>
                 <a
-                  href="https://youtube.com"
+                  href="https://x.com/Saksham37718116"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-200"
@@ -74,8 +77,18 @@ const Index = () => {
           </section>
 
           <section className="mb-10">
-            <h2 className="text-xl font-medium mb-6">Join the community</h2>
-            <ContactForm />
+            <div className="flex items-center justify-between">
+              <h2 className="text-xl font-medium">Latest blog posts</h2>
+              <Link
+                href="/blogs"
+                className="text-zinc-600 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-200 flex items-center gap-1 text-sm transition-colors"
+              >
+                View all posts <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+           
+
+           <LandingPosts/>
           </section>
 
           <section>
@@ -94,6 +107,11 @@ const Index = () => {
                 </p>
               </div>
             ))}
+          </section>
+
+          <section className="mb-10">
+            <h2 className="text-xl font-medium mb-6">Connect with me</h2>
+            <ContactForm />
           </section>
         </main>
       </div>
