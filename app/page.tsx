@@ -49,7 +49,35 @@ const Index = () => {
 
             <div className="mb-8">
               <a
-                href="https://www.linkedin.com/company/mkrypt/posts/?feedView=all"
+                href="https://www.starboard-ai.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-zinc-800 dark:text-zinc-200 font-medium hover:underline"
+              >
+                Starboard AI
+              </a>
+              <p className="text-zinc-600 dark:text-zinc-400">
+                Founding Engineer
+              </p>
+            </div>
+
+            <div className="mb-8">
+              <a
+                href="https://www.valuemetrix.io/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-zinc-800 dark:text-zinc-200 font-medium hover:underline"
+              >
+                valuemetrix 
+              </a>
+              <p className="text-zinc-600 dark:text-zinc-400">
+                Full Stack Intern
+              </p>
+            </div>
+
+            <div className="mb-8">
+              <a
+                href="https://www.mkrypt.org/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-zinc-800 dark:text-zinc-200 font-medium hover:underline"
