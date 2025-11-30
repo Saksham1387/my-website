@@ -1,5 +1,4 @@
 import React from "react";
-import { ThemeToggle } from "@/components/ThemeToggle";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Calendar, Clock, ArrowLeft, Share2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -8,6 +7,7 @@ import { client } from "@/sanity/client";
 import imageUrlBuilder from "@sanity/image-url";
 import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import { PortableText, SanityDocument } from "next-sanity";
+import { SimpleThemeToggle } from "@/components/ThemeToggle";
 
 const POST_QUERY = `*[_type == "post" && slug.current == $slug][0]`;
 
@@ -39,7 +39,7 @@ export default async function PostPage({
     <div className="min-h-screen bg-white dark:bg-zinc-900 text-zinc-800 dark:text-zinc-200 transition-colors duration-300">
       <main className="container mx-auto px-6 py-16 max-w-3xl">
         <div className="absolute top-6 right-6">
-          <ThemeToggle />
+          <SimpleThemeToggle />
         </div>
 
         <Link
