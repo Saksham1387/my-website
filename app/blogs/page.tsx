@@ -1,5 +1,5 @@
 import React from "react";
-import { ThemeToggle } from "@/components/ThemeToggle";
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Pagination,
@@ -14,6 +14,7 @@ import { Calendar, Clock } from "lucide-react";
 import Link from "next/link";
 import { client } from "@/sanity/client";
 import { SanityDocument } from "next-sanity";
+import { SimpleThemeToggle } from "@/components/ThemeToggle";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const BlogCard = ({ post }: { post: any }) => {
@@ -90,7 +91,7 @@ const Blogs = async () => {
     <div className="min-h-screen bg-white dark:bg-zinc-900 text-zinc-800 dark:text-zinc-200 transition-colors duration-300">
       <main className="container mx-auto px-6 py-16 max-w-3xl">
         <div className="absolute top-6 right-6">
-          <ThemeToggle />
+          <SimpleThemeToggle />
         </div>
 
         <div className="mb-8">
