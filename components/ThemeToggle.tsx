@@ -1,9 +1,10 @@
 "use client"
+// Keep the original simple toggle as an alternative export
 import { Moon, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "next-themes";
 
-export function ThemeToggle() {
+export function SimpleThemeToggle() {
   const { theme, setTheme } = useTheme();
 
   return (

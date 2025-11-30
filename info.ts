@@ -1,6 +1,6 @@
 export const name = "Saksham Chaudhary";
 
-export const bio = "Software engineer, Founding Engineer at Mkrypt."
+export const bio = "Software engineer, Founding Engineer at Starboard AI."
 
 
 export const projects = [
