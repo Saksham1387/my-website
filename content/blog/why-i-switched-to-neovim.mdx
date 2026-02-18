@@ -1,0 +1,59 @@
+---
+title: "Why I Switched to Neovim (and You Should Too)"
+description: "My journey from VS Code to Neovim, the plugins that make it work, and why modal editing changed how I think about code."
+date: "2026-02-10"
+tags: ["tools", "neovim", "productivity"]
+published: true
+---
+
+After years of using VS Code, I finally took the plunge into Neovim. Here's why — and what I learned along the way.
+
+## The Trigger
+
+It started when I noticed my VS Code was taking 3+ seconds to open a file in a large monorepo. My `node_modules` had grown to 2GB, and the TypeScript language server was eating 4GB of RAM.
+
+```bash
+$ ps aux | grep -i code | awk '{sum += $6} END {print sum/1024 "MB"}'
+4231.5MB
+```
+
+That's when I decided enough was enough.
+
+## The Setup
+
+My Neovim config is built on `lazy.nvim` as the plugin manager. Here's the core:
+
+```lua
+-- init.lua
+require("config.lazy")
+require("config.keymaps")
+require("config.options")
+require("config.autocmds")
+```
+
+### Essential Plugins
+
+1. **telescope.nvim** — Fuzzy finding everything
+2. **nvim-treesitter** — Syntax highlighting that actually understands code
+3. **mason.nvim** — LSP server management
+4. **nvim-cmp** — Autocompletion
+5. **oil.nvim** — File explorer that feels like a buffer
+
+## The Learning Curve
+
+The first week was brutal. My productivity dropped by 70%. I kept reaching for the mouse, muscle memory fighting every keystroke.
+
+But by week two, something clicked. I started *thinking* in motions:
+
+```
+ciw    → change inner word
+da"    → delete around quotes
+vip    → select inner paragraph
+gg=G   → re-indent entire file
+```
+
+## The Result
+
+Three months in, I'm faster than I ever was in VS Code. Not because Neovim is faster (though it is), but because modal editing fundamentally changed how I interact with text.
+
+The real win isn't speed — it's **intentionality**. Every keystroke has purpose.
