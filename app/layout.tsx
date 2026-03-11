@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider"
+import { FloatingNav } from "@/components/FloatingNav";
 
 const jetbrainsMono = JetBrains_Mono({
   variable: "--font-mono",
@@ -21,7 +22,7 @@ export default function RootLayout({
     <html lang="en">
        <link rel="icon" href="/main.png" />
       <body
-        className={`${jetbrainsMono.variable} font-mono antialiased`}
+        className={`${jetbrainsMono.variable} font-mono antialiased relative pb-20 sm:pb-24`}
       >
          <ThemeProvider
             attribute="class"
@@ -30,6 +31,7 @@ export default function RootLayout({
             disableTransitionOnChange
           >
              {children}
+             <FloatingNav />
           </ThemeProvider>
        
       </body>

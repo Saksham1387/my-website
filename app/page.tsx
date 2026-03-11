@@ -1,6 +1,5 @@
 import { SimpleThemeToggle } from "@/components/ThemeToggle";
 import { ContactForm } from "@/components/ContactForm";
-import { ThemeProvider } from "@/components/theme-provider";
 import { GitHubIcon, TwitterIcon } from "@/components/Socialicon";
 import { Toaster } from "@/components/ui/toaster";
 import { bio, name, projects } from "../info";
@@ -12,60 +11,59 @@ const Index = () => {
   const recentPosts = getAllPosts().slice(0, 3);
 
   return (
-    <ThemeProvider defaultTheme="light">
-      <div className="min-h-screen bg-orange-100/10 dark:bg-zinc-900 text-zinc-800 dark:text-zinc-200 transition-colors duration-300">
-        <Toaster />
+    <div className="min-h-screen bg-orange-100/10 dark:bg-zinc-900 text-zinc-800 dark:text-zinc-200 transition-colors duration-300">
+      <Toaster />
 
-        <main className="container mx-auto px-6 py-12 max-w-6xl">
-          <div className="absolute top-6 right-6">
-            <SimpleThemeToggle />
-          </div>
+      <main className="container mx-auto px-6 py-12 max-w-6xl">
+        <div className="absolute top-6 right-6">
+          <SimpleThemeToggle />
+        </div>
 
-          {/* Header Section */}
-          <section className="mb-8">
-            <div className="flex items-center gap-3 mb-2">
-              <h1 className="text-3xl font-semibold">{name}</h1>
-              <div className="flex gap-2">
-                <a
-                  href="https://github.com/saksham1387"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-200"
-                >
-                  <GitHubIcon className="w-5 h-5" />
-                </a>
-                <a
-                  href="https://x.com/Saksham37718116"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-200"
-                >
-                  <TwitterIcon className="w-5 h-5 pt-1" />
-                </a>
-              </div>
+        {/* Header Section */}
+        <section className="mb-8">
+          <div className="flex items-center gap-3 mb-2">
+            <h1 className="text-3xl font-semibold">{name}</h1>
+            <div className="flex gap-2">
+              <a
+                href="https://github.com/saksham1387"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-200"
+              >
+                <GitHubIcon className="w-5 h-5" />
+              </a>
+              <a
+                href="https://x.com/Saksham37718116"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-200"
+              >
+                <TwitterIcon className="w-5 h-5 pt-1" />
+              </a>
             </div>
-            <p className="text-zinc-600 dark:text-zinc-400">{bio}</p>
-          </section>
+          </div>
+          <p className="text-zinc-600 dark:text-zinc-400">{bio}</p>
+        </section>
 
-          {/* Two Column Layout */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-            {/* Left Section */}
-            <div className="space-y-8">
-              {/* Work Experience */}
-              <section>
-                <h2 className="text-xl font-medium mb-4">Work Experience</h2>
-                <div className="space-y-4">
-                  <div>
-                    <a
-                      href="https://www.starboard-ai.com/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-zinc-800 dark:text-zinc-200 font-medium hover:underline"
-                    >
-                      Starboard AI
-                    </a>
-                    <p className="text-zinc-600 dark:text-zinc-400 text-sm">
-                      Founding Engineer
+        {/* Two Column Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+          {/* Left Section */}
+          <div className="space-y-8">
+            {/* Work Experience */}
+            <section>
+              <h2 className="text-xl font-medium mb-4">Work Experience</h2>
+              <div className="space-y-4">
+                <div>
+                  <a
+                    href="https://www.starboard-ai.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-zinc-800 dark:text-zinc-200 font-medium hover:underline"
+                  >
+                    Starboard AI
+                  </a>
+                  <p className="text-zinc-600 dark:text-zinc-400 text-sm">
+                    Founding Engineer
                     </p>
                   </div>
 
@@ -177,7 +175,6 @@ const Index = () => {
           </div>
         </main>
       </div>
-    </ThemeProvider>
   );
 };
 
