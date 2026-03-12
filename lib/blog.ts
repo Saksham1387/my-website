@@ -1,9 +1,4 @@
-import fs from "fs";
-import path from "path";
-import matter from "gray-matter";
-import readingTime from "reading-time";
-
-const BLOG_DIR = path.join(process.cwd(), "content", "blog");
+import { allPosts } from ".contentlayer/generated";
 
 export interface BlogPost {
   slug: string;
@@ -12,48 +7,38 @@ export interface BlogPost {
   date: string;
   tags: string[];
   readingTime: string;
-  content: string;
+  bodyCode: string;
   published: boolean;
 }
 
 export function getAllPosts(): BlogPost[] {
-  if (!fs.existsSync(BLOG_DIR)) {
-    return [];
-  }
-
-  const files = fs.readdirSync(BLOG_DIR).filter((f) => f.endsWith(".mdx"));
-
-  const posts = files
-    .map((file) => {
-      const slug = file.replace(/\.mdx$/, "");
-      return getPostBySlug(slug);
-    })
-    .filter((post): post is BlogPost => post !== null && post.published)
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-
-  return posts;
+  return allPosts
+    .filter((post) => post.published !== false)
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .map((post) => ({
+      slug: post.slug,
+      title: post.title,
+      description: post.description,
+      date: post.date,
+      tags: post.tags ?? [],
+      readingTime: post.readingTime,
+      bodyCode: post.body.code,
+      published: post.published ?? true,
+    }));
 }
 
 export function getPostBySlug(slug: string): BlogPost | null {
-  const filePath = path.join(BLOG_DIR, `${slug}.mdx`);
-
-  if (!fs.existsSync(filePath)) {
-    return null;
-  }
-
-  const fileContent = fs.readFileSync(filePath, "utf-8");
-  const { data, content } = matter(fileContent);
-  const stats = readingTime(content);
-
+  const post = allPosts.find((p) => p.slug === slug);
+  if (!post) return null;
   return {
-    slug,
-    title: data.title || "Untitled",
-    description: data.description || "",
-    date: data.date ? new Date(data.date).toISOString() : new Date().toISOString(),
-    tags: data.tags || [],
-    readingTime: stats.text,
-    content,
-    published: data.published !== false,
+    slug: post.slug,
+    title: post.title,
+    description: post.description,
+    date: post.date,
+    tags: post.tags ?? [],
+    readingTime: post.readingTime,
+    bodyCode: post.body.code,
+    published: post.published ?? true,
   };
 }
 

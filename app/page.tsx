@@ -3,12 +3,11 @@ import { ContactForm } from "@/components/ContactForm";
 import { GitHubIcon, TwitterIcon } from "@/components/Socialicon";
 import { Toaster } from "@/components/ui/toaster";
 import { bio, name, projects } from "../info";
-import { getAllPosts } from "@/lib/blog";
-import Link from "next/link";
+import { getSubstackPosts } from "@/lib/substack";
 import { ArrowRight } from "lucide-react";
 
-const Index = () => {
-  const recentPosts = getAllPosts().slice(0, 3);
+const Index = async () => {
+  const recentPosts = (await getSubstackPosts()).slice(0, 3);
 
   return (
     <div className="min-h-screen bg-orange-100/10 dark:bg-zinc-900 text-zinc-800 dark:text-zinc-200 transition-colors duration-300">
@@ -142,18 +141,22 @@ const Index = () => {
               <section>
                 <div className="flex items-center justify-between mb-4">
                   <h2 className="text-xl font-medium">Recent Posts</h2>
-                  <Link
-                    href="/blogs"
+                  <a
+                    href="https://sakshamchaudhary.substack.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="text-sm text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-200 inline-flex items-center gap-1 transition-colors"
                   >
                     all posts <ArrowRight className="h-3 w-3" />
-                  </Link>
+                  </a>
                 </div>
                 <div className="space-y-3">
                   {recentPosts.map((post) => (
-                    <Link
-                      key={post.slug}
-                      href={`/blogs/${post.slug}`}
+                    <a
+                      key={post.link}
+                      href={post.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="block group"
                     >
                       <div className="flex items-start justify-between gap-4">
@@ -161,13 +164,13 @@ const Index = () => {
                           {post.title}
                         </p>
                         <span className="text-xs text-zinc-400 dark:text-zinc-500 shrink-0">
-                          {new Date(post.date).toLocaleDateString("en-US", {
+                          {new Date(post.pubDate).toLocaleDateString("en-US", {
                             month: "short",
                             day: "numeric",
                           })}
                         </span>
                       </div>
-                    </Link>
+                    </a>
                   ))}
                 </div>
               </section>
