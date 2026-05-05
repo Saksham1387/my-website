@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
 import { Textarea } from "@/components/ui/textarea";
+import { ArrowRight } from "lucide-react";
 
 export function ContactForm() {
   const [name, setName] = useState("");
@@ -38,8 +39,8 @@ export function ContactForm() {
       if (res.ok) {
         setTimeout(() => {
           toast({
-            title: "Success!",
-            description: "Thank you for joining the community!",
+            title: "Message sent!",
+            description: "Thanks for reaching out. I'll get back to you soon.",
           });
           setName("");
           setEmail("");
@@ -48,8 +49,8 @@ export function ContactForm() {
         }, 1000);
       } else {
         toast({
-          title: "Failed to send Message",
-          description: "Thank you for joining the community!",
+          title: "Failed to send",
+          description: "Something went wrong. Please try again.",
         });
       }
     } catch (_) {
@@ -60,63 +61,48 @@ export function ContactForm() {
       setMessage("");
       setIsSubmitting(false);
     }
-
   };
 
   return (
     <form onSubmit={handleSubmit} className="w-full">
-      <div className="flex flex-col gap-4">
-        <div className="flex flex-col md:flex-row items-end gap-4">
-          <div className="flex-1">
-            <label htmlFor="name" className="block text-sm font-medium mb-1">
-              Your name
-            </label>
-            <Input
-              id="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              className="w-full bg-[#f5f5f5] focus:right-0"
-              placeholder="Saksham"
-              required
-            />
-          </div>
-          <div className="flex-1">
-            <label htmlFor="email" className="block text-sm font-medium mb-1">
-              Email
-            </label>
-            <Input
-              id="email"
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="w-full bg-[#f5f5f5]"
-              placeholder="saksham@developer.com"
-              required
-            />
-          </div>
-          <div>
-            <Button
-              type="submit"
-              disabled={isSubmitting}
-              className="bg-[#333333] hover:bg-zinc-900 text-white dark:bg-zinc-700 dark:hover:bg-zinc-600 w-full cursor-pointer"
-            >
-              {isSubmitting ? "Submitting..." : "Submit"}
-            </Button>
-          </div>
-        </div>
-        <div>
-          <label htmlFor="message" className="block text-sm font-medium mb-1">
-            Message
-          </label>
-          <Textarea
-            id="message"
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            className="w-full bg-[#f5f5f5]"
-            placeholder="Type your message here..."
-            rows={4}
+      <div className="flex flex-col gap-2.5">
+        <div className="grid grid-cols-2 gap-2.5">
+          <Input
+            id="name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="w-full h-8 text-xs bg-card border-border/60 focus:border-foreground/30"
+            placeholder="Name"
             required
           />
+          <Input
+            id="email"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="w-full h-8 text-xs bg-card border-border/60 focus:border-foreground/30"
+            placeholder="Email"
+            required
+          />
+        </div>
+        <Textarea
+          id="message"
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          className="w-full text-xs bg-card border-border/60 focus:border-foreground/30 min-h-[60px]"
+          placeholder="What's on your mind?"
+          rows={2}
+          required
+        />
+        <div>
+          <Button
+            type="submit"
+            disabled={isSubmitting}
+            className="bg-foreground text-background hover:opacity-90 cursor-pointer rounded-full px-4 h-7 text-xs gap-1.5"
+          >
+            {isSubmitting ? "Sending..." : "Send"}
+            <ArrowRight className="w-3 h-3" />
+          </Button>
         </div>
       </div>
     </form>
