@@ -18,6 +18,9 @@ const instrumentSerif = Instrument_Serif({
 export const metadata: Metadata = {
   title: "Saksham Chaudhary",
   description: "Software engineer, Founding Engineer at Starboard AI.",
+  icons: {
+    icon: "/main.png",
+  },
 };
 
 export default function RootLayout({
@@ -27,15 +30,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <link rel="icon" href="/main.png" />
       <body
-        className={`${jetbrainsMono.variable} ${instrumentSerif.variable} font-mono antialiased relative pb-20 sm:pb-24`}
+        className={`${jetbrainsMono.variable} ${instrumentSerif.variable} relative pb-20 font-mono antialiased sm:pb-24`}
       >
         <div className="grain-overlay" />
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
-          enableSystem
+          defaultTheme="light"
+          enableSystem={false}
           disableTransitionOnChange
         >
           {children}

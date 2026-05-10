@@ -1,16 +1,42 @@
 import { SimpleThemeToggle } from "@/components/ThemeToggle";
 import { ContactForm } from "@/components/ContactForm";
-import { GitHubIcon, TwitterIcon } from "@/components/Socialicon";
+import { GitHubIcon } from "@/components/Socialicon";
 import { Toaster } from "@/components/ui/toaster";
 import { bio, name, projects, resumeUrl, notionUrl } from "../info";
 import { getSubstackPosts } from "@/lib/substack";
 import { ArrowUpRight, Download, NotebookPen } from "lucide-react";
+import Image from "next/image";
+import { MDXRemote } from "next-mdx-remote/rsc";
 
 const workExperience = [
-  { company: "Starboard AI (Current)", role: "Founding Engineer", url: "https://www.starboard-ai.com/" },
-  { company: "Valuemetrix", role: "Full Stack Intern", url: "https://www.valuemetrix.io/" },
-  { company: "Mkrypt", role: "Founding Engineer", url: "https://www.mkrypt.org/" },
-  { company: "CNCF New Delhi", role: "Full Stack Engineer", url: "https://www.linkedin.com/company/cncgnd/" },
+  {
+    company: "Starboard AI (Current)",
+    role: "AI Engineer (Contract)",
+    url: "https://www.starboard-ai.com/",
+    description:
+      "Building AI product infrastructure at an early-stage company, working across applied AI workflows, frontend systems, backend services, and fast product iteration.",
+  },
+  {
+    company: "Valuemetrix",
+    role: "Full Stack Intern",
+    url: "https://www.valuemetrix.io/",
+    description:
+      "- Set up a service to send weekly updates and statistics about users' trading metrics.\n- Built a research report feature for individual stocks, helping users analyze stock history alongside the latest market news.",
+  },
+  {
+    company: "Mkrypt",
+    role: "Founding Engineer",
+    url: "https://www.mkrypt.org/",
+    description:
+      "Worked primarily on two products, building them from scratch alongside strong developers in the Web3 ecosystem.\n\n- **Fluxor:** An on-chain hackathon hosting platform built with resilient, distributed backends to support large-scale hackathons. Worked with Ethereum as the primary chain alongside the Flow blockchain.\n- **Conscious Club:** An on-chain NFT marketplace with a unique concept around brand integrations and coupon codes.",
+  },
+  {
+    company: "CNCF New Delhi",
+    role: "Full Stack Engineer",
+    url: "https://ocgroups.dev/cncf/group/9fryhhb",
+    description:
+      "- Led and contributed to the creation of the main website for the CNCF New Delhi community.\n- Deployed the project and collaborated with multiple developers.\n- Gained experience maintaining an open-source project in a community-driven environment.",
+  },
 ];
 
 const Index = async () => {
@@ -21,138 +47,149 @@ const Index = async () => {
     <div className="min-h-screen bg-background text-foreground transition-colors duration-500">
       <Toaster />
 
-      <main className="mx-auto max-w-6xl px-6 sm:px-8 py-8">
-
-        {/* ── Header row ── */}
-        <div className="flex items-start justify-between mb-6">
-          <div>
-            <h1 className="font-[family-name:var(--font-display)] text-3xl sm:text-4xl tracking-tight leading-none mb-1.5">
-              {name}
-            </h1>
-            <p className="text-muted-foreground text-sm max-w-md leading-relaxed">
-              {bio}
-            </p>
-          </div>
+      <main className="mx-auto flex max-w-3xl flex-col items-center gap-8 px-6 py-8 text-center sm:px-8">
+        <div className="flex w-full justify-end">
           <SimpleThemeToggle />
         </div>
 
+        {/* ── Header ── */}
+        <header className="flex w-full flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
+          <div className="relative size-24 overflow-hidden rounded-full border border-primary/20 bg-card shadow-sm sm:size-28">
+            <Image
+              src="/profile-image.png"
+              alt="Saksham Chaudhary"
+              fill
+              priority
+              sizes="112px"
+              className="object-cover"
+            />
+          </div>
+
+          <div className="flex max-w-xl flex-col items-center gap-2 sm:items-start sm:text-left">
+            <h1 className="font-[family-name:var(--font-display)] text-3xl leading-tight text-primary sm:text-4xl">
+              {name}
+            </h1>
+            <p className="max-w-md text-sm leading-relaxed text-muted-foreground">
+              {bio}
+            </p>
+          </div>
+        </header>
+
         {/* ── Link pills ── */}
-        <div className="flex flex-wrap items-center gap-2 mb-8">
+        <div className="flex flex-wrap items-center justify-center gap-2">
           <a
             href="https://github.com/saksham1387"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-border text-xs hover:bg-zinc-100 dark:hover:bg-zinc-800/60 transition-colors"
+            className="inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1.5 text-xs transition-colors hover:bg-accent"
           >
-            <GitHubIcon className="w-3.5 h-3.5" />
-            GitHub
+            <GitHubIcon className="size-3.5" />
           </a>
           <a
             href="https://x.com/Saksham1184122"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-border text-xs hover:bg-zinc-100 dark:hover:bg-zinc-800/60 transition-colors"
+            className="inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1.5 text-xs transition-colors hover:bg-accent"
           >
-            <TwitterIcon className="w-3.5 h-3.5" />
-            Twitter
+            <Image
+              src="/twitter.png"
+              alt=""
+              width={14}
+              height={14}
+              className="size-3.5"
+            />
           </a>
           <a
             href={resumeUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-foreground text-background text-xs font-medium hover:opacity-90 transition-opacity"
+            className="inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1.5 text-xs transition-colors hover:bg-accent "
           >
-            <Download className="w-3 h-3" />
+            <Download className="size-3" />
             Resume
           </a>
           <a
             href={notionUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-border text-xs hover:bg-zinc-100 dark:hover:bg-zinc-800/60 transition-colors"
+            className="inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1.5 text-xs transition-colors hover:bg-accent"
           >
-            <NotebookPen className="w-3 h-3" />
+            <NotebookPen className="size-3" />
             My Work
           </a>
         </div>
 
-        <div className="section-divider mb-8" />
+        <div className="section-divider w-full" />
 
-        {/* ── Main two-column grid ── */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-8">
-
-          {/* ── LEFT COLUMN ── */}
-          <div className="space-y-8">
-
-            {/* Work Experience */}
-            <section>
-              <h2 className="font-[family-name:var(--font-display)] text-xl tracking-tight mb-3">
+        {/* ── Main vertical stack ── */}
+        <div className="flex w-full flex-col gap-8">
+          {/* Work Experience */}
+          <section className="flex flex-col gap-3">
+              <h2 className="text-xl font-semibold">
                 Experience
               </h2>
-              <div className="space-y-0">
+              <div className="relative flex flex-col pl-7 ">
                 {workExperience.map((job) => (
-                  <a
+                  <details
                     key={job.company}
-                    href={job.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group flex items-center justify-between py-2 border-b border-border/50 hover:border-foreground/20 transition-colors"
+                    className="group relative border-b border-border/50 py-2 text-left transition-colors open:border-primary/20"
                   >
-                    <div>
-                      <span className="font-medium text-sm group-hover:text-zinc-600 dark:group-hover:text-zinc-300 transition-colors">
-                        {job.company}
-                      </span>
-                      <p className="text-[11px] text-muted-foreground">{job.role}</p>
+                  
+                    <summary className="flex cursor-pointer list-none items-center justify-between gap-4 [&::-webkit-details-marker]:hidden">
+                      <div>
+                        <span className="text-sm font-medium transition-colors group-hover:text-muted-foreground">
+                          {job.company}
+                        </span>
+                        <p className="text-[11px] text-muted-foreground">{job.role}</p>
+                      </div>
+                      
+                    </summary>
+                    <div className="flex flex-col gap-2 pb-1 pt-3">
+                      <div className="experience-markdown">
+                        <MDXRemote source={job.description} />
+                      </div>
+                      <a
+                        href={job.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex w-fit items-center gap-1 text-[10px] uppercase tracking-wider text-primary transition-opacity hover:opacity-70"
+                      >
+                        Visit <ArrowUpRight className="size-2.5" />
+                      </a>
                     </div>
-                    <ArrowUpRight className="w-3 h-3 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
-                  </a>
+                  </details>
                 ))}
               </div>
             </section>
 
-            {/* Contact */}
-            <section>
-              <h2 className="font-[family-name:var(--font-display)] text-xl tracking-tight mb-1">
-                Say hello
-              </h2>
-              <p className="text-[11px] text-muted-foreground mb-3">
-                Have an idea or just want to connect? Drop me a message.
-              </p>
-              <ContactForm />
-            </section>
-          </div>
-
-          {/* ── RIGHT COLUMN ── */}
-          <div className="space-y-8">
-
-            {/* Projects */}
-            <section>
-              <h2 className="font-[family-name:var(--font-display)] text-xl tracking-tight mb-3">
+          {/* Projects */}
+          <section className="flex flex-col gap-3">
+              <h2 className="text-xl font-semibold">
                 Projects
               </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 gap-3">
                 {projects.map((project) => (
                   <a
                     key={project.name}
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="project-card group block rounded-xl border border-border bg-card p-4 hover:border-zinc-400 dark:hover:border-zinc-500 transition-all"
+                    className="project-card group block rounded-lg border border-border bg-card p-4 text-left transition-all hover:border-foreground/30"
                   >
-                    <div className="flex items-start justify-between mb-1.5">
-                      <h3 className="text-sm font-semibold group-hover:text-zinc-600 dark:group-hover:text-zinc-300 transition-colors">
+                    <div className="mb-1.5 flex items-start justify-between gap-3">
+                      <h3 className="text-sm font-semibold transition-colors group-hover:text-muted-foreground">
                         {project.name}
                       </h3>
-                      <ArrowUpRight className="w-3 h-3 text-muted-foreground opacity-0 group-hover:opacity-100 transition-all duration-300 shrink-0 mt-0.5" />
+                      <ArrowUpRight className="mt-0.5 size-3 shrink-0 text-muted-foreground opacity-0 transition-all duration-300 group-hover:opacity-100" />
                     </div>
-                    <p className="text-[11px] text-muted-foreground leading-relaxed mb-2.5 line-clamp-2">
+                    <p className="mb-2.5 line-clamp-2 text-[11px] leading-relaxed text-muted-foreground">
                       {project.description}
                     </p>
                     <div className="flex flex-wrap gap-1.5">
                       {project.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="text-[10px] px-2 py-0.5 rounded-full bg-warm text-warm-foreground font-medium"
+                          className="rounded-full bg-warm px-2 py-0.5 text-[10px] font-medium text-warm-foreground"
                         >
                           {tag}
                         </span>
@@ -163,39 +200,39 @@ const Index = async () => {
               </div>
             </section>
 
-            {/* Blog */}
-            <section>
-              <div className="flex items-baseline justify-between mb-3">
-                <h2 className="font-[family-name:var(--font-display)] text-xl tracking-tight">
+          {/* Blog */}
+          <section className="flex flex-col gap-3">
+              <div className="flex items-baseline justify-between gap-4">
+                <h2 className="text-xl font-semibold">
                   Writing
                 </h2>
                 <a
                   href="https://sakshamchaudhary.substack.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[10px] text-muted-foreground hover:text-foreground inline-flex items-center gap-1 transition-colors tracking-wider uppercase"
+                  className="inline-flex items-center gap-1 text-[10px] uppercase tracking-wider text-muted-foreground transition-colors hover:text-foreground"
                 >
-                  All posts <ArrowUpRight className="h-2.5 w-2.5" />
+                  All posts <ArrowUpRight className="size-2.5" />
                 </a>
               </div>
-              <div className="space-y-0">
+              <div className="flex flex-col">
                 {recentPosts.map((post, i) => (
                   <a
                     key={post.link}
                     href={post.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group flex items-baseline justify-between gap-3 py-2 border-b border-border/50 hover:border-foreground/20 transition-colors"
+                    className="group flex items-baseline justify-between gap-3 border-b border-border/50 py-2 text-left transition-colors hover:border-foreground/20"
                   >
-                    <div className="flex items-baseline gap-3 min-w-0">
-                      <span className="text-[10px] text-muted-foreground/40 font-mono tabular-nums shrink-0">
+                    <div className="flex min-w-0 items-baseline gap-3">
+                      <span className="shrink-0 font-mono text-[10px] tabular-nums text-muted-foreground/40">
                         {String(i + 1).padStart(2, "0")}
                       </span>
-                      <span className="text-xs font-medium truncate group-hover:text-zinc-600 dark:group-hover:text-zinc-300 transition-colors">
+                      <span className="truncate text-xs font-medium transition-colors group-hover:text-muted-foreground">
                         {post.title}
                       </span>
                     </div>
-                    <span className="text-[10px] text-muted-foreground shrink-0 tabular-nums">
+                    <span className="shrink-0 text-[10px] tabular-nums text-muted-foreground">
                       {new Date(post.pubDate).toLocaleDateString("en-US", {
                         month: "short",
                         day: "numeric",
@@ -205,7 +242,43 @@ const Index = async () => {
                 ))}
               </div>
             </section>
-          </div>
+
+          {/* GitHub */}
+          <section className="flex flex-col gap-3">
+              <div className="flex items-baseline justify-between gap-4">
+                <h2 className="text-xl font-semibold">
+                  Consistency
+                </h2>
+              </div>
+              <a
+                href="https://github.com/saksham1387"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block overflow-x-auto rounded-lg border border-primary/10 bg-background p-3 transition-colors hover:border-primary/30"
+              >
+                <Image
+                  src="https://ghchart.rshah.org/1b213c/saksham1387"
+                  alt="GitHub contribution heatmap for Saksham Chaudhary"
+                  width={640}
+                  height={104}
+                  unoptimized
+                  className="min-w-[640px] max-w-none"
+                />
+              </a>
+            </section>
+
+          {/* Contact */}
+          <section className="flex flex-col gap-3">
+              <div className="flex flex-col gap-1">
+                <h2 className="text-xl font-semibold">
+                  Say hello
+                </h2>
+                <p className="text-[11px] text-muted-foreground">
+                  Have an idea or just want to connect? Drop me a message.
+                </p>
+              </div>
+              <ContactForm />
+            </section>
         </div>
       </main>
     </div>

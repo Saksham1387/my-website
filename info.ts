@@ -1,6 +1,6 @@
 export const name = "Saksham Chaudhary";
 
-export const bio = "Software engineer, Founding Engineer at Starboard AI."
+export const bio = "Software engineer"
 
 export const resumeUrl = "https://drive.google.com/file/d/1srW6BmZ81EW-13pG-wHd8vRTMWyXNJZg/view?usp=sharing";
 
@@ -14,13 +14,13 @@ export const projects = [
         tags: ["Next.js", "tRPC", "Prisma", "AI SDK"],
     },
     {
-        name: "Exness-TS",
-        description: "Professional-grade trading platform prototype with real-time Binance price streaming, advanced charting, margin trading up to 50x, and integrated risk management.",
+        name: "Exness",
+        description: "Professional-grade CFD platform with real-time Binance price streaming, advanced charting, margin trading up to 50x, and integrated risk management.",
         github: "https://github.com/Saksham1387/Exness",
         tags: ["Bun", "React", "Redis", "PostgreSQL"],
     },
     {
-        name: "Exchange-Rust",
+        name: "Exchange (written in Rust)",
         description: "A centralized exchange written in Rust — order matching engine, API gateway, WebSocket server, and market maker with Redis-backed messaging.",
         github: "https://github.com/Saksham1387/Exchange-Rust",
         tags: ["Rust", "Redis", "WebSocket"],
