@@ -10,7 +10,7 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 
 const workExperience = [
   {
-    company: "Starboard AI (Current)",
+    company: "Starboard AI",
     role: "AI Engineer (Contract)",
     url: "https://www.starboard-ai.com/",
     description:
