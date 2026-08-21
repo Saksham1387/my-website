@@ -19,7 +19,7 @@ export async function getSubstackPosts(): Promise<SubstackPost[]> {
 
     const itemMatches = xml.match(/<item>([\s\S]*?)<\/item>/g) ?? [];
 
-    return itemMatches.map((item) => ({
+    return itemMatches.map((item) => ({ 
       title: extractTag(item, "title"),
       link: extractTag(item, "link"),
       pubDate: extractTag(item, "pubDate"),
