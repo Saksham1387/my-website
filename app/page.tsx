@@ -177,9 +177,20 @@ const Index = async () => {
                     className="project-card group block rounded-lg border border-border bg-card p-4 text-left transition-all hover:border-foreground/30"
                   >
                     <div className="mb-1.5 flex items-start justify-between gap-3">
-                      <h3 className="text-sm font-semibold transition-colors group-hover:text-muted-foreground">
-                        {project.name}
-                      </h3>
+                      <div className="flex flex-col items-start gap-1">
+                        <h3 className="text-sm font-semibold transition-colors group-hover:text-muted-foreground">
+                          {project.name}
+                        </h3>
+                        {project.current && (
+                          <span className="inline-flex items-center gap-1 rounded-full border border-primary/20 bg-warm px-1.5 py-0.5 text-[9px] font-medium uppercase tracking-wide text-warm-foreground">
+                            <span className="relative flex size-1.5">
+                              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-current opacity-60" />
+                              <span className="relative inline-flex size-1.5 rounded-full bg-current" />
+                            </span>
+                            Currently working on
+                          </span>
+                        )}
+                      </div>
                       <ArrowUpRight className="mt-0.5 size-3 shrink-0 text-muted-foreground opacity-0 transition-all duration-300 group-hover:opacity-100" />
                     </div>
                     <p className="mb-2.5 line-clamp-2 text-[11px] leading-relaxed text-muted-foreground">
