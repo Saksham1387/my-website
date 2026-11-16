@@ -26,7 +26,7 @@ export const projects: Project[] = [
         name: "BizzyAgent",
         description: "A cloud coding agent for GitHub repositories — chat with an agent that works in an isolated Linux sandbox to inspect issues and PRs, change code, run tests, and open pull requests.",
         github: "https://github.com/Saksham1387/BizzyAgent",
-        tags: ["Next.js", "Bun", "Turborepo", "AI Agents", "E2B"],
+        tags: ["Next.js", "Bun", "Turborepo", "AI Agents", "E2B","Cloud Agents"],
     },
     {
         name: "Exness",

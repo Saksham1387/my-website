@@ -1,6 +1,6 @@
 import { SimpleThemeToggle } from "@/components/ThemeToggle";
 import { ContactForm } from "@/components/ContactForm";
-import { GitHubIcon } from "@/components/Socialicon";
+import { GitHubIcon, LinkedInIcon } from "@/components/Socialicon";
 import { Toaster } from "@/components/ui/toaster";
 import { bio, name, projects, resumeUrl, notionUrl } from "../info";
 import { getSubstackPosts } from "@/lib/substack";
@@ -84,6 +84,14 @@ const Index = async () => {
             className="inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1.5 text-xs transition-colors hover:bg-accent"
           >
             <GitHubIcon className="size-3.5" />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/saksham-chaudhary-21564722a/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1.5 text-xs transition-colors hover:bg-accent"
+          >
+            <LinkedInIcon className="size-3.5" />
           </a>
           <a
             href="https://x.com/Saksham1184122"
