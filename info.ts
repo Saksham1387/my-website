@@ -1,8 +1,8 @@
 export const name = "Saksham Chaudhary";
 
-export const bio = "Software engineer"
+export const bio = "AI Full Stack engineer"
 
-export const resumeUrl = "https://drive.google.com/file/d/1RcoH6t66YixbY-SXO4TpiM_-EP-ZCiYp/view?usp=sharing";
+export const resumeUrl = "https://drive.google.com/file/d/1rqjMHXjVCCoUYay8V3EU25_DgDdJoBYJ/view?usp=sharing";
 
 export const notionUrl = "https://chemical-card-e29.notion.site/My-Work-1d239851fb19800cb12de90cf8362db2";
 

@@ -1,18 +1,19 @@
 import type { Metadata } from "next";
-import { JetBrains_Mono, Instrument_Serif } from "next/font/google";
+import { IBM_Plex_Mono, Newsreader } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/components/theme-provider"
-import { FloatingNav } from "@/components/FloatingNav";
 
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-mono",
+const newsreader = Newsreader({
+  variable: "--font-body",
   subsets: ["latin"],
+  style: ["normal", "italic"],
+  display: "swap",
 });
 
-const instrumentSerif = Instrument_Serif({
-  variable: "--font-display",
+const ibmPlexMono = IBM_Plex_Mono({
+  variable: "--font-mono",
   subsets: ["latin"],
   weight: "400",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -29,20 +30,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className="dark">
       <body
-        className={`${jetbrainsMono.variable} ${instrumentSerif.variable} relative pb-20 font-mono antialiased sm:pb-24`}
+        className={`${newsreader.variable} ${ibmPlexMono.variable} antialiased`}
       >
-        <div className="grain-overlay" />
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem={false}
-          disableTransitionOnChange
-        >
-          {children}
-          <FloatingNav />
-        </ThemeProvider>
+        {children}
       </body>
     </html>
   );
