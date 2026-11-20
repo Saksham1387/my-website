@@ -1,0 +1,39 @@
+---
+title: "How I started working better with my AI agents while coding"
+description: "Three practical ideas from harness engineering for getting better results from AI coding agents."
+date: "2026-11-20"
+tags: ["Engineer"]
+published: true
+---
+
+![Illustration for the article](/article-1.png)
+
+If you’re a software engineer, whether you’re working in a role or actively looking for one, you’ve probably heard the term *harness engineering*. I’ve been reading about this field in OpenAI’s article on harness engineering, and it got me thinking about how engineers can get more productive with AI agents.
+
+Maybe you’ve heard a colleague say they’ve run out of AI credits for the day. Or watched someone struggle to explain a task to Claude, then add “please” to their prompts out of frustration. These situations are common, but there are practical ways to work better with agents. Many of them come down to a few ideas. Here are three that stood out to me.
+
+## 1. Switching to a more powerful model won’t always solve the problem
+
+When an agent gets stuck or misunderstands a task, it’s tempting to assume the model is the problem and switch to a more powerful one. But that doesn’t always help. OpenAI’s article on harness engineering shows how a better harness can help the same model solve problems more effectively.
+
+Before spending more on a different model, consider whether the agent has the right instructions, tools, and context. Improving those can lead to better results without increasing your model costs.
+
+## 2. If it isn’t in the repository, the agent may not know about it
+
+Have you ever been using Prisma 2.5 while an agent suggests syntax from a different version? The agent may not know which version your project uses unless that information is available in the repository or provided in its context.
+
+Agents don’t automatically know the details of your codebase, especially when starting a new session. They need time and context to understand how the project works. Without shared instructions, they may repeatedly spend part of their context window exploring the repository or make assumptions that lead to incorrect suggestions.
+
+You can reduce that repetition by adding an `AGENTS.md` file to your repository. Use it to record useful project details, conventions, and commands so an agent can get oriented and work on tasks more effectively. Like good documentation for people, clear instructions help prevent the same explanations from being needed again and again.
+
+## 3. Give your agent only what it needs
+
+More context isn’t automatically better. Give the agent the task, relevant files, constraints, and any project-specific instructions it needs to do the work. Too little context can leave it guessing; too much unrelated context can make the important details harder to find.
+
+Start with the information most relevant to the task, then add more if the agent needs it. This makes your request clearer and helps the agent focus on the problem you want it to solve.
+
+## Sources
+
+- [Learn Harness Engineering](https://walkinglabs.github.io/learn-harness-engineering/en/)
+
+
